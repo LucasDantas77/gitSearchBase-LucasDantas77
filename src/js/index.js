@@ -2,18 +2,25 @@ const myHeaders = {
     "Content-Type": "application Json"
 }
 
-function usersApi(user) {
-    const data = fetch(`https://api.github.com/users/${user}`, {
+const local = JSON.parse(localStorage.getItem("banco"))
+
+async function usersApi(user) {
+    const data = await fetch(`https://api.github.com/users/${user}`, {
             method: "GET",
             header: myHeaders
         })
         .then(res => res.json())
         .then(res => {
-           window.location.replace("./src/pages/home/home.html")
+            console.log(res)
+
+            localStorage.setItem("banco", JSON.stringify(res))
+            window.location.replace("./src/pages/home/home.html")
             return res
         })
+    
     return data
 }
+
 
 
 function buscarUsuario() {
@@ -24,10 +31,7 @@ function buscarUsuario() {
         event.preventDefault()
         const inputValue = input.value
         const resp = usersApi(inputValue)
-        const respJson = JSON.stringify(resp)
-        if (!resp.message) {
-            localStorage.setItem("banco", respJson)
-        }
+        return resp
     })
 }
 buscarUsuario()
@@ -35,26 +39,26 @@ buscarUsuario()
 
 function desabilitarBotao() {
     const inputUsuario = document.getElementById("inputUsuario").value
-   
+
     if (inputUsuario) {
         document.getElementById("btnUsuario").disabled = false;
-        return 
-    }else{
+        return
+    } else {
         document.getElementById("btnUsuario").disabled = true;
     }
 }
 desabilitarBotao()
 
 
-function spinner(){
+function spinner() {
     const btnCarregar = document.getElementById("btnUsuario")
-  
-    btnCarregar.addEventListener("click", ()=>{
-      
-        btnCarregar.innerHTML= ""
-      
+
+    btnCarregar.addEventListener("click", () => {
+
+        btnCarregar.innerHTML = ""
+
         const imgSpinner = document.createElement("img")
-        imgSpinner.src= "./src/assets/spinner.png"
+        imgSpinner.src = "./src/assets/spinner.png"
         imgSpinner.alt = "imagem spinner"
         imgSpinner.classList.add("carregando")
 
@@ -62,6 +66,4 @@ function spinner(){
     })
 }
 spinner()
-
-
 
