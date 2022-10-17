@@ -60,6 +60,12 @@ body {
     cursor: pointer;
 }
 
+
+#voltar{
+    text-decoration: none;
+    color: var(--color-grey-7);
+}
+
 #btnEmail {
     background-color: var(--color-brand-1);
 }
@@ -154,6 +160,7 @@ body {
         width: 139px;
         height: 30px;
         line-height: 10px;
+        text-decoration: none;
     }
 
     #btnEmail{
