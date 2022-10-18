@@ -14,7 +14,7 @@ async function reposUsuario() {
         })
         .then(res => res.json())
         .then(res => {
-            console.log(res)
+           
             return res
         })
 
@@ -26,7 +26,7 @@ reposUsuario()
 
 
 function renderUsuario(array) {
-
+  
     const divinfos = document.createElement("div")
     const imgUsuario = document.createElement("img")
     const h3Nome = document.createElement("h3")
@@ -35,7 +35,7 @@ function renderUsuario(array) {
     const btnEmail = document.createElement("button")
     const btnTroca = document.createElement("button")
 
-
+  
     divinfos.classList.add("infos__usuarios")
     imgUsuario.src = array.avatar_url
 
@@ -48,12 +48,12 @@ function renderUsuario(array) {
     btnTroca.id = "voltar"
     btnEmail.innerText = "Email"
     btnTroca.innerText = " trocar de usuario"
-
+ 
     divinfos.append(imgUsuario, h3Nome, pBio)
     divBtns.append(btnEmail, btnTroca)
 
     header.append(divinfos, divBtns)
-
+   
 }
 renderUsuario(local)
 

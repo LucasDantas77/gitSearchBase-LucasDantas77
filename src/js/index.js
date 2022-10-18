@@ -2,7 +2,11 @@ const myHeaders = {
     "Content-Type": "application Json"
 }
 
+
+
 const local = JSON.parse(localStorage.getItem("banco"))
+const div = document.querySelector(".conteudo__search")
+
 
 async function usersApi(user) {
     const data = await fetch(`https://api.github.com/users/${user}`, {
@@ -11,13 +15,11 @@ async function usersApi(user) {
         })
         .then(res => res.json())
         .then(res => {
-            console.log(res)
-
             localStorage.setItem("banco", JSON.stringify(res))
             window.location.replace("./src/pages/home/home.html")
             return res
         })
-    
+
     return data
 }
 
