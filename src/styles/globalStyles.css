@@ -6,6 +6,10 @@
   font-family:sans-serif;
 }
 
+button{
+  cursor:pointer
+}
+
 :root {
   --color-brand-1: #C2255C;
   --color-brand-2: #D6336C;
